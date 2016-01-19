@@ -9,6 +9,8 @@ python:
   - 3.5
   - pypy
   - pypy3  
+services:
+  - mysql
 install:
   - pip install -r requirements.txt
 
