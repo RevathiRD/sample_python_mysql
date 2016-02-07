@@ -2,13 +2,41 @@ build_image: drydock/u12pytpls:prod
 language: python
 
 python:
-  - 2.6
+  #- 2.6
   - 2.7
   - 3.3
   - 3.4
-  - 3.5
+ # - 3.5
   - pypy
-  - pypy3  
+ # - pypy3  
+env:
+  - M1=ONE
+  - M2=TWO
+matrix:
+  allow_failures:
+    - python: 3.3
+      env: M1=ONE
+    #- node_js: 0.12
+     # env: M2=two
+    #- node_js: 4.2.2
+     
+  exclude:
+    - python: "3.4"
+      env: M1=ONE
+      env: M2=TWO
+    #- node_js: "4.2.2"
+    - python: "3.3"
+      env: M1=ONE
+    
+  include:
+    - python: "pypy3"
+      env: M1=ONE
+    - python: "2.6"
+      env: M1=ONE
+      env: M2=TWO
+    - python: "3.2"
+     # env: M1=ONE
+      env: M2=TWO
 services:
   - mysql
 install:
